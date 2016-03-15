@@ -1,0 +1,102 @@
+- provide(:title, sanitize(@projet.titre))
+- provide(:description, sanitize("[#{@projet.categorie.nom}] #{@projet.description.truncate(100)}"))
+.row
+  .metadonnees-projet
+    = image_tag "#{@projet.categorie.nom}.png"
+    %p.label.label-default.categorie= @projet.try(:categorie).try(:nom)
+    %p.datecrea
+      Créé il y a
+      = time_ago_in_words(@projet.created_at)
+      %br
+        par
+        %strong
+          = @projet.contributeur.pseudo
+
+    - if @projet.localisation && !@projet.localisation.empty?
+      %h4 Localisation:
+      %p= @projet.localisation
+    -if @projet.demarrage != nil
+      %h4 Date de lancement
+      %p= @projet.demarrage.strftime("%m/%Y")
+
+    - if current_contributeur && current_contributeur.type == 'Animateur'
+      %hr
+      .anim-only
+        %strong Les informations suivantes ne sont visibles que par l'animateur de la plateforme :
+        %p
+          = @projet.contributeur.try(:nom)
+          = @projet.contributeur.try(:prenom)
+          %br
+          = mail_to @projet.contributeur.email
+          = @projet.contributeur.try(:telephone)
+          %br
+          = @projet.contributeur.try(:commune)
+          %br
+          - if @projet.statut.length > 0
+            %ul
+              %strong Etapes validées
+            - @projet.statut.split(';').each do |step|
+              %li= step
+      %hr
+      = link_to 'Modifier ce projet', edit_projet_path(@projet), class: 'btn btn-primary pull-right'
+
+    - elsif @projet.contributeur == current_contributeur
+      %hr
+      = link_to 'Modifier votre projet', edit_projet_path(@projet), class: 'btn btn-primary pull-right'
+
+  .contenu-projet
+    %h1= @projet.titre
+    = image_tag(@projet.image.url)
+    %h2 Description
+    = simple_format @projet.description
+    -if @projet.urlsite != "" && @projet.urlsite != nil
+      %em= link_to @projet.urlsite, @projet.urlsite
+    -if @projet.besoin != "" && @projet.besoin != nil
+      %h2 Besoins
+      = simple_format @projet.besoin
+
+    %hr
+    .barre-sociale
+      %h4 Partagez ce projet dans vos réseaux
+      .facebook= facebook_button :facebook => {:button_caption => "Facebook", :static_link => true}
+      .twitter= twitter_button :twitter => {:button_caption => "Twitter", :static_link => true}
+      - if @projet.liked_by?(current_contributeur)
+        .coeur=link_to image_tag('dislike.png'), unlike_projet_path(@projet.id)
+      - else
+        .coeur=link_to image_tag('heart-16.png'), like_projet_path(@projet.id)
+      .comptecoeur= @projet.likes.count
+      personnes aiment ce projet
+    %hr
+
+    .commentaires
+      %h4
+        %span.badge
+          = @commentaires.count
+        Commentaires
+
+      - if current_contributeur
+        - provide(:url, projet_commentaires_path(@projet.id))
+        = render 'commentaires/form'
+      - else
+        =link_to "Rejoindre la discussion", new_projet_commentaire_path(@projet), class: 'btn btn-primary btn-lg'
+    %br
+      - @commentaires.reverse.each do |commentaire|
+        .panelcommentaire
+          .panel.panel-default
+            .panel-heading
+              %p
+                %strong
+                  = commentaire.contributeur.pseudo
+                \-
+                il y a
+                = time_ago_in_words(commentaire.created_at)
+            .panel-body
+              = simple_format commentaire.message
+  .liens-projets
+    %h4 Projets à proximité
+    %ul
+      - @projets.each do |projet|
+        %li= link_to "→ #{projet.titre}", projet_path(projet)
+      %br
+      %li= link_to 'Tous les projets', projets_path
+

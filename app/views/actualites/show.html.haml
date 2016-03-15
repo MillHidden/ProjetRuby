@@ -1,0 +1,50 @@
+- provide(:title, sanitize(@actualite.titre))
+- provide(:description, sanitize("[Actualité] #{@actualite.contenu.truncate(90)}"))
+.container
+  .col-sm-6
+    %h1.titreactu= @actualite.titre
+    %em
+      = "Le #{I18n.localize(@actualite.created_at.to_date, format: :short)} #{@actualite.created_at.year},"
+      = "par #{@actualite.animateur.pseudo}"
+    .contenu
+      = simple_format @actualite.contenu
+      - if @actualite.date || @actualite.lieu.length > 0 || @actualite.siteweb.length > 0
+        %h3 Informations pratiques
+        - if @actualite.date
+          %svg.icon-calendar{:role => "img"}
+            %use{"xlink:href" => "#{image_url("icons.svg")}\#icon-calendar"}
+          le
+          = I18n.localize(@actualite.date)
+          %br
+        - if @actualite.lieu != ""
+          %svg.icon-location{:role => "img"}
+            %use{"xlink:href" => "#{image_url("icons.svg")}\#icon-location"}
+          à
+          = @actualite.lieu
+          %br
+        - if @actualite.siteweb != ""
+          %svg.icon-globe{:role => "img"}
+            %use{"xlink:href" => "#{image_url("icons.svg")}\#icon-globe"}
+          = link_to @actualite.siteweb, @actualite.siteweb
+    - if current_contributeur && current_contributeur.type == 'Animateur'
+      = link_to 'Editer', edit_actualite_path(@actualite), class: 'btn btn-default'
+    %p
+    %em
+  .col-sm-6.imgactu
+    = image_tag @actualite.try(:image), class: "img-responsive"
+    .col-sm-12.cartouche.social.block-center
+      %p Partagez cette actualité sur vos réseaux sociaux 
+      .facebook= facebook_button :facebook => {:button_caption => "Facebook", :static_link => true}
+      .twitter= twitter_button :twitter => {:button_caption => "Twitter", :static_link => true}
+
+.container
+  .row
+    %h3.deractu Dernières actualités
+
+.col-sm-12.actbar
+  -@filactu.each do |actu|
+    .col-sm-3
+      = link_to image_tag(actu.try(:image), class: "img-responsive center-block placeimg"), actualite_path(actu)
+      %h4= link_to actu.titre, actualite_path(actu)
+      %p.date= actu.created_at.strftime('%d/%m/%y')
+.container

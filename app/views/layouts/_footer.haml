@@ -1,0 +1,38 @@
+%footer
+  .container
+    .pays-perche.text-center
+      = image_tag 'logopaysperchefooterblanc.png'
+    %address
+      %h3 PAYS PERCHE D'EURE-ET-LOIR
+      %p
+        18 rue de la Gare
+        \-
+        28240 La Loupe
+        %br
+        = mail_to 'paysperche.siap@wanadoo.fr'
+      %p
+        Tél : 02 37 29 09 29
+        %br
+        Fax : 02 37 29 09 30
+
+    .newsletter
+      %h3 Inscrivez-vous à la lettre d’information
+      = form_tag('/newsletter/inscription', method: :post) do
+        .input-group.input-group-lg
+          = email_field_tag(:email, nil, placeholder: 'Mon email')
+          .span.input-group-btn
+            = submit_tag "Valider", class: 'btn'
+
+    .financeurs.text-center
+      %p Avec le soutien financier de
+      = image_tag 'region-centre-violet.png'
+      = image_tag 'leader.png'
+      = image_tag 'europe-centre.png'
+      = image_tag 'europe.png'
+  %br
+  .row.text-center.made-by
+    %p
+      Réalisé par
+      =link_to 'Wild Code School', 'http://www.wildcodeschool.fr', target: '_blank'
+      l'école numérique de La Loupe 
+      = link_to image_tag("wcs.png"), "http://www.wildcodeschool.fr", target: '_blank' , class: 'wcsfooter'

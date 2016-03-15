@@ -1,0 +1,159 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.splash-intro {
+  background-image: image-url("perche-participatif.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  img {
+    width: 100%;
+  }
+  h1 {
+    @include make-sm-column(4);
+    @include make-sm-column-offset(5);
+    color: grey;
+    font-family: 'GravityBold', 'Helvetica', sans-serif; 
+    margin: 0;
+    margin-top: 2rem;
+    padding-left: 2rem;
+  }
+}
+@media (min-width: $screen-md-min) {
+  .splash-intro {
+    height: 355px;
+    background-color: $rouge;
+  }
+}
+
+.navigation{
+  background-color: $rouge;
+  @include make-row(12);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  .bouton{
+    @include make-sm-column(3);
+    color: #FFF;
+    a {
+      display: block;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      width: 100%;
+      margin: 0px;
+      text-decoration: none;
+      &:hover, &:focus {
+        //background-color: darken($rouge,15%);
+      }
+      .icon {
+        display: block;
+        svg {
+          width: 100%;
+          height: 5rem;
+          fill: #FFF;
+        }
+      }
+      .action {
+        height: 2.9em;
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 1.5rem;
+        display: block;
+        color: #FFF;
+      }
+    }
+  }
+  .nouveau-projet {
+    a {
+      background-color: $bleu;
+      &:hover, &:focus {
+        background-color: lighten($bleu,10%);
+      }
+    }
+  }
+  .sondage {
+    a {
+      background-color: $ocre;
+      &:hover, &:focus {
+        background-color: lighten($ocre,10%);
+      }
+    }
+  }
+  .actualites {
+    a {
+      background-color: $orange;
+      &:hover, &:focus {
+        background-color: lighten($orange,10%);
+      }
+    }
+  }
+  .howto {
+    a {
+      background-color: $vert;
+      &:hover, &:focus {
+        background-color: lighten($vert,10%);
+      }
+    }
+  }
+}
+
+.derniers-projets {
+  //!\\ CONTAINER
+  @extend .container;
+  h2 {
+    @extend .text-center;
+  }
+}
+.contenu-page {
+  @include make-sm-column(8);
+  @include make-sm-column-offset(2);
+  @extend .well;
+}
+
+.nav-bas {
+  @include make-sm-column(8);
+  @include make-sm-column-offset(2);
+  .back-inscription {
+    @extend .pull-left;
+  }
+  .back-home {
+    @extend .pull-right;
+  }
+}
+
+// PAGE ANIMATION
+.anim-projets, .anim-commentaires, .anim-actus {
+  @extend .table-responsive;
+  table {
+    @extend .table;
+    @extend .table-hover;
+  }
+}
+
+// PAGE HOWTO
+.comment-ca-marche{
+  h1 {
+    color: $vert;
+    font-size: 33px;
+  }
+  .vert{
+    color: $vert;
+  }
+  h4 a{
+    text-decoration: none;
+    font-weight:bold;
+  }
+  a{
+    text-decoration: none;
+    font-weight:bold;
+    display: inline;  
+  }
+  p{
+    display: inline; 
+  }
+  svg{
+    fill: $vert;
+    max-width: 100%;
+    height: 2.5rem;
+    margin-top: 1rem;
+    float: right;
+  }
+}

@@ -1,0 +1,147 @@
+// Place all the styles related to the actualites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+
+.form-actu {
+  @include make-sm-column(10);
+  @include make-sm-column-offset(1);
+  h1 {
+    @extend .text-center;
+  }
+  .field {
+    img {
+      max-width: 100%;
+      max-height: 250px;
+    }
+    margin-top: 2rem;
+    #wysihtml-toolbar {
+      svg {
+        width: 1.7rem;
+        height: 1.7rem;
+        fill: grey;
+      }
+      .wysihtml5-command-active {
+        svg {
+          fill: #000;
+        }
+      }
+    }
+    .date {
+      label {
+        display: block;
+      }
+      select {
+        @include make-sm-column(4);
+      }
+    }
+  }
+
+  textarea, .wysihtml5-sandbox {
+    min-height: 30rem;
+  }
+}
+h1.titreactu {
+  border-bottom: 2px solid $orange;
+}
+
+.cartouche{
+  background-color: $orange;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  border-radius: 0px 0px 5px 5px;
+  .facebook {
+    display: inline-block;
+      a {
+        color: white;
+        margin-right: 10px;
+        background-color: $facebook;
+        @extend .btn;
+        @extend .btn-default;
+          &:hover {
+          color: $facebook;
+          background-color: white;
+          }
+      }
+  }
+  .twitter {
+    display: inline-block;
+      a {
+        margin-left: 10px;
+        background-color: $twitter;
+        @extend .btn;
+        @extend .btn-default;
+        color: white;
+          &:hover {
+          color: $twitter;
+          background-color: white;
+          }
+      }
+  }
+}
+
+.actbar {
+  background-color: $orange;
+  text-align: center;
+  background-repeat: -y;
+  h4::first-letter {
+    font-weight: bold;
+  }
+  h4 {
+    border-bottom: 2px dotted black;
+    color: white;
+    a {
+      text-decoration: none;
+      color: white;
+      &:hover {
+        color: $rouge;
+      }
+    }
+  }
+}
+
+.degraf {
+    margin-top: 100px;
+}
+
+.date {
+  text-align: left;
+  font-weight: bold;
+}
+
+.actu {
+  text-align: left;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  .case {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 5px;
+  }
+}
+.contenu {
+  svg {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+  }
+}
+.imgactu {
+  padding: 20px 0px 0px 0px;
+}
+
+.placeimg {
+  padding-top: 10px;
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.deractu {
+  padding-top: 150px;
+}

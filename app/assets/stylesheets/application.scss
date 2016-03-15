@@ -1,0 +1,587 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "wysihtml";
+@import "pages";
+@import "projets";
+@import "contributeurs";
+@import "sondages";
+@import "actualites";
+
+@font-face {
+  font-family: 'GravityBold';
+  src:font-url('Gravity-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'GravityBook';
+  src:font-url('Gravity-Book.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'GrooveNext';
+  src:font-url('GrooveNext.ttf') format('truetype');
+}
+
+html {
+  font-size: 16px;
+  body {
+    font-family: 'GravityBook', 'Helvetica';
+    h1, h2, h3 {
+      font-family: 'GravityBold', 'Helvetica';
+    }
+  }
+}
+
+@media (min-width: $screen-md-min){
+
+}
+
+.notices {
+  @extend .container;
+}
+
+footer {
+  @include make-row(12);
+  margin-top: 2rem;
+  padding: 2rem;
+  color: #FFF;
+  background-color:$vert;
+  border-top: solid .5rem $vert-fonce;
+  h3 {
+    font-size: 1.1rem;
+  }
+  .pays-perche {
+    @include make-sm-column(2);
+    @include make-sm-column-offset(1);
+    img {
+      width: 100%;
+      max-width: 160px;
+      padding-top: 35px;
+    }
+  }
+  address {
+    @include make-sm-column(4);
+    a {
+      color: #fff;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+  .newsletter {
+    @include make-sm-column(4);
+    padding-top: 15px;
+    text-align: center;
+    input {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      color: $gray-dark;
+      height: 47px;
+    }
+    .input-lg, .input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn{
+      height: 47px;
+      width: 80px;
+    }
+    input[type="email"] {
+      background-color: lighten($vert,30%);
+      border: 0px none;
+      border-radius: 6px 0px 0px 6px;
+      width: 100%;
+    }
+    input[type="submit"] {
+      background-color: $gray-lighter;
+    }
+    // hack pour changer la couleur du placeholder dans tous les navigateurs
+    input::-webkit-input-placeholder {
+      color: grey;
+    }
+    input:-moz-placeholder {
+      /* FF 4-18 */
+      color: grey;
+    }
+    input::-moz-placeholder {
+      /* FF 19+ */
+      color: grey;
+    }
+    input:-ms-input-placeholder {
+      /* IE 10+ */
+      color: grey;
+    }
+  }
+  .financeurs {
+    @include make-sm-column(10);
+    @include make-sm-column-offset(1);
+    margin-top: 1.5rem;
+    p {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-right: .7rem;
+    }
+    img {
+      display: inline-block;
+      max-width: 100%;
+      max-height: 3.5rem;
+      margin: 5px auto;
+    }
+  }
+  .made-by p{
+    display: inline;
+    color: lighten($vert,20%);
+    a {
+      display: inline;
+      text-decoration: none;
+      color: lighten($vert,50%);
+      &:hover {
+        text-decoration: underline;
+        color: #fff;
+      }
+    }
+  }
+}
+
+form {
+  @extend .form-group;
+}
+input, textarea, {
+  @extend .form-control;
+  @extend .input-lg;
+}
+
+select {
+  @extend .form-control;
+}
+
+.label {
+  padding: .4em .6em .2em;
+}
+
+.field_with_errors {
+  @extend .has-error;
+}
+/* NAVBAR 4 COLORS MOBILE */
+.projets{
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($bleu, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($bleu, 10%);
+    }
+    .navbar-default{
+      background-color: $bleu;
+    }
+    .navbar-header {
+      button {
+        background-color: $bleu;
+      &:hover {
+        background-color: $bleu;
+      }
+      }
+    }
+  }
+}
+.actualites{
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($orange, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($orange, 10%);
+    }
+    .navbar-default{
+      background-color: $orange;
+    }
+    .navbar-header {
+      button {
+        background-color: $orange;
+      &:hover {
+        background-color: $orange;
+      }
+      }
+    }
+  }
+}
+.sondages{
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($ocre, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($ocre, 10%);
+    }
+    .navbar-default{
+      background-color: $ocre;
+    }
+    .navbar-header {
+      button {
+        background-color: $ocre;
+      &:hover {
+        background-color: $ocre;
+      }
+      }
+    }
+  }
+}
+.pages, .registrations, .sessions, .passwords, .confirmations {
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($vert, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($vert, 10%);
+    }
+    .navbar-default{
+      background-color: $vert;
+    }
+    .navbar-header {
+      button {
+        background-color: $vert;
+      &:hover {
+        background-color: $vert;
+      }
+      }
+    }
+  }
+}
+
+/* END NAVBAR 4 COLORS MOBILE */
+
+.navbar-all{
+  svg{
+    width: 25px;
+    height: 25px;
+    fill: #FFF;
+  }
+  .navbar-header {
+    button {
+      border-color: #fff;
+      &:hover {
+        border-color: #fff;
+      }
+    }
+  }
+  .navbar-text{
+    @extend .text-center;
+    margin-top: 7px;
+    color: #FFF;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .navbar-default{
+      border: 0px solid transparent;
+  }
+  .navbar-brand{
+    margin-top: 0px;
+    color: #FFF;
+      img{
+        margin-top: -13px;
+      }
+  }
+  .navbar-default .navbar-nav > .active > a{
+    color: #000;
+    font-weight: bold;
+  }
+  .navbar-default .navbar-nav a{
+    color: #FFF;
+    &:hover{
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  .btn-primary {
+    color: #FFF;
+    border-color: #FFF;
+    background-color: transparent;
+    &:hover{
+      color: #FFF;
+    }
+  }
+  .navbar-collapse{
+    border-top: 0px none;
+    a {
+      @extend .text-center;
+    }
+  }
+  .navbar-toggle{
+    background-color: #DDD;
+    &:hover{
+      background-color: darken(#DDD, 20%);
+      border-color: darken(#DDD, 20%);
+      color: #FFF;
+    }
+    .icon-bar{
+      background-color: #FFF;
+    }
+  }
+}
+
+
+@media (min-width: $screen-md-min){
+
+/* NAVBAR 4 COLORS DESKTOP */
+
+.projets {
+  .navbar-all {
+    .navbar-default .navbar-nav a {
+      color: #FFF;
+      &:hover{
+        background-color: lighten($bleu, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($bleu, 10%);
+    }
+    .navbar-default{
+      background-color: $bleu;
+    }
+    .navbar-header {
+      button {
+        background-color: $bleu;
+        &:hover {
+          background-color: $bleu;
+        }
+      }
+    }
+  }
+}
+
+.actualites{
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($orange, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($orange, 10%);
+    }
+    .navbar-default{
+      background-color: $orange;
+    }
+    .navbar-header {
+      button {
+        background-color: $orange;
+      &:hover {
+        background-color: $orange;
+      }
+      }
+    }
+  }
+}
+
+.sondages{
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($ocre, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($ocre, 10%);
+    }
+    .navbar-default{
+      background-color: $ocre;
+    }
+    .navbar-header {
+      button {
+        background-color: $ocre;
+      &:hover {
+        background-color: $ocre;
+      }
+      }
+    }
+  }
+}
+
+.pages, .registrations, .sessions, .passwords, .confirmations {
+  .navbar-all{
+    .navbar-default .navbar-nav a{
+      color: #FFF;
+      &:hover{
+      background-color: lighten($vert, 10%);
+      }
+    }
+    .navbar-default .navbar-nav > .active > a{
+     background-color: lighten($vert, 10%);
+    }
+    .navbar-default{
+      background-color: $vert;
+    }
+    .navbar-header {
+      button {
+        background-color: $vert;
+      &:hover {
+        background-color: $vert;
+      }
+      }
+    }
+  }
+}
+
+/* END NAVBAR 4 COLORS DESKTOP */
+
+  .navbar-all{
+    .navbar{
+      height: 107px;
+      border: 0px solid transparent;
+      border-radius: 0px;
+    }
+    .navbar-nav  a {
+      margin-right: 10px; /*Safari FIX*/
+      margin-top: 0px;
+      width: 134px; /*Safari FIX*/
+      font-weight: bold;
+      &:hover{
+        color: #FFF;
+      }
+      svg{
+        margin-top: -10px;
+        width: 90px;
+        height: 40px;
+        fill: #FFF;
+      }
+    }
+    .navbar-right {
+      a {
+        margin-top: 25px;
+      }
+
+    }
+    .navbar-brand{
+      margin-top: 15px;
+      img{
+       height: 4rem;
+      }
+    }
+  }
+}
+
+.navbar-intro{
+  .navbar-default {
+    background-color: #fff;
+  }
+  .ligne-rouge{
+    height: .5rem;
+    background-color: $rouge;
+  }
+  .navbar-brand{
+    font-family: 'GrooveNext', 'GravityBold', 'Helvetica';
+    font-weight: 800;
+    font-size: 2rem;
+    height: 6.18rem;
+    padding: 0;
+    img{
+      height: 6.75rem;
+    }
+  }
+  .navbar-right {
+    a {
+      @extend .btn;
+      @extend .btn-default;
+      margin: 3px;
+      margin-top: 51px;
+    }
+  }
+  .navbar {
+    border: none;
+    margin-bottom: 0px;
+  }
+  .navbar-collapse.in { //style du menu mobile déroulant page intro
+    .navbar-nav {
+      margin: 0;
+    }
+    a {
+      @extend .text-center;
+      @extend .btn-lg;
+      margin: 0;
+      width: 100%;
+      border: 0;
+      border-bottom: solid 1px #ccc;
+      border-radius: 0;
+    }
+  }
+}
+
+.facebook {
+  display: inline-block;
+  a {
+    @extend .btn;
+    @extend .btn-default;
+    padding: 4px 9px;
+    color: white;
+    margin-right: 5px;
+    background-color: $facebook;
+    border-color: darken($facebook, 10%);
+    &:hover {
+      color: $facebook;
+      background-color: white;
+      border-color: $facebook;
+    }
+  }
+}
+.twitter {
+  display: inline-block;
+  a {
+    @extend .btn;
+    @extend .btn-default;
+    padding: 4px 9px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: $twitter;
+    border-color: darken($twitter, 10%);
+    color: white;
+    &:hover {
+      color: $twitter;
+      background-color: white;
+      border-color: $twitter;
+    }
+  }
+}
+.coeur {
+  display: inline-block;
+  a {
+    @extend .btn;
+    @extend .btn-default;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: $rouge;
+    border-color: darken($rouge, 10%);
+    &:hover {
+      background-color: white;
+      border-color: $rouge;
+    }
+  }
+}
+.comptecoeur {
+  display: inline-block;
+  margin-left: 5px;
+}
+
