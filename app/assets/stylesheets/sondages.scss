@@ -1,0 +1,82 @@
+// Place all the styles related to the sondages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-sondage {
+  @include make-sm-column(6);
+  @include make-sm-column-offset(3);
+  padding-top: 20px;
+  margin: 0;
+
+  input[type="checkbox"]{
+    margin-top: -10px;
+    margin-left: -25px;
+    width: 1rem;
+  }
+
+
+  .block {
+    border: 1px solid $ocre;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    margin: 20px auto 20px auto;
+    padding: .8rem 1.2rem 0;
+    .control-label {
+      border-bottom: 1px solid $ocre;
+    }
+  }
+}
+
+.merci {
+  margin: 170px auto 170px auto;
+  text-align: center;
+  h1 {
+    color: $ocre;
+  }
+}
+
+#radio {
+  input[type="radio"]{
+    width: 1rem;
+    margin-left: -25px;
+  }
+}
+
+.radio {
+  input[type="radio"]{
+    width: 1rem;
+    margin: -9px 0px 0px -25px;
+  }
+}
+.last-sondages {
+  background-color: $ocre;
+  padding: 15px;
+  p{
+    font-weight: bold;
+    color: #FFF;
+    display: inline;
+  }
+  a{
+    display: inline;
+  }
+  h3{
+    color: #FFF;
+  }
+}
+
+.download a {
+  color: #fff;
+  text-decoration: underline;
+  &:hover {
+    color: $rouge;
+    text-decoration: none;
+  }
+}
+
+.sondages {
+  .label {
+    margin-right: 1em;
+  }
+  .panel{ border-color: $ocre; }
+  .panel-heading{ background-color: $ocre;}
+}

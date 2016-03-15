@@ -1,0 +1,85 @@
+- provide( :title, sanitize("Animation de la plateforme") )
+%h1.text-center= yield :title
+
+.anim-actions
+  = link_to 'Télécharger les réponses au sondage', export_sondages_path(format: 'csv'), class: 'btn btn-md btn-primary'
+  = link_to '+ Ajouter une actualité', new_actualite_path, class: 'btn btn-md btn-primary'
+
+.anim-projets
+  %h2 Projets en lignes
+  %table
+    %thead
+      %th #
+      %th Auteur
+      %th Titre
+      %th Localisation
+      %th Publié le
+      %th Actions
+    %tbody
+      - @projets.each do |projet|
+        %tr
+          %td= projet.id
+          %td= projet.contributeur.pseudo
+          %td= link_to projet.titre, projet_path(projet)
+          %td= projet.contributeur.try(:commune)
+          %td= projet.created_at.to_date
+          %td
+            = link_to 'Editer', edit_projet_path(projet)
+            |
+            = link_to 'Supprimer', projet_path(projet),
+                method: :delete,
+                data: {confirm: "Êtes-vous sur de vouloir supprimer le projet \"#{projet.titre}\" ?"}
+
+.anim-commentaires
+  %h2 Commentaires déposés
+  %table
+    %thead
+      %th #
+      %th Auteur
+      %th Projet
+      %th Messsage
+      %th Publié le
+      %th Actions
+    %tbody
+      - @commentaires.each do |commentaire|
+        %tr
+          %td= commentaire.id
+          %td= commentaire.contributeur.pseudo
+          %td
+            = "\##{commentaire.projet_id} -"
+            = link_to commentaire.projet.titre, projet_path(commentaire.projet_id)
+          %td= commentaire.message.truncate(50)
+          %td= commentaire.created_at.to_date
+          %td
+            = link_to 'Editer', edit_projet_commentaire_path(commentaire.projet_id, commentaire.id)
+            |
+            = link_to 'Supprimer',
+                projet_commentaire_path(commentaire.projet_id, commentaire.id),
+                method: :delete,
+                data: {confirm: "Êtes-vous sur de vouloir supprimer ce commentaire ?"}
+
+.anim-actus
+  %h2
+    Actualités
+  %table
+    %thead
+      %th #
+      %th Auteur
+      %th Titre
+      %th Publié le
+      %th Actions
+    %tbody
+      - @actualites.each do |actualite|
+        %tr
+          %td= actualite.id
+          %td= actualite.animateur.pseudo
+          %td= link_to actualite.titre, actualite_path(actualite)
+          %td= actualite.created_at.to_date
+          %td
+            = link_to 'Editer', edit_actualite_path(actualite)
+            |
+            = link_to 'Supprimer', actualite_path(actualite),
+                method: :delete,
+                data: {confirm: "Êtes-vous sur de vouloir supprimer cette actualité ?"}
+
+

@@ -1,0 +1,34 @@
+.col-sm-6.col-md-4.encart
+  %a{ href: projet_path(projet) }
+
+    %span.panel
+      %span.panel-heading 
+        %span.row
+          %span.col-xs-9
+            %p
+              %svg.icon-location{:role => "img"}
+                %use{"xlink:href" => "#{image_url("icons.svg")}\#icon-location"} 
+              = projet.codepostal
+            %p
+              %svg.icon-clock{:role => "img"}
+                %use{"xlink:href" => "#{image_url("icons.svg")}\#icon-clock"} 
+              %em= "Créé il y a #{time_ago_in_words(projet.created_at)}"
+          %span.col-xs-3
+            = image_tag "#{projet.categorie.nom}.png" 
+
+      %span.panel-body{ style: "background: url(#{projet.image}) center center no-repeat; background-size: cover;" }
+        %h2= projet.titre
+        -if projet.image.url.nil?
+          %p= projet.description.truncate(120)
+
+      %span.panel-footer
+        %span.row
+          %span.col-xs-6.text-center
+            = image_tag 'chat-16.png'
+            %br
+            = projet.commentaires.count
+            = 'commentaire'.pluralize(projet.commentaires.count)
+          %span.col-xs-6.text-center
+            =image_tag 'heart-16.png'
+            %br
+            = projet.likes.count

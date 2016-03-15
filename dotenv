@@ -1,0 +1,23 @@
+MAILCHIMP_API=YOUR_MAILCHIMP_API_KEY
+MAILCHIMP_LIST_ID=
+
+# Hosting images on amazon S3
+S3_BUCKET=YOUR_BUCKET_NAME
+AWS_KEY=
+AWS_SECRET=
+
+
+# To generate an admin account from the seeds
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
+
+# Sending emails with sendgrid
+SENDGRID_USERNAME=
+SENDGRID_PASSWORD=
+MAILER_SENDER="Organisation <bonjour@organisation.fr>"
+MAILER_HOST="www.percheparticipatif.fr" # Base domain name to generate links into the mailers
+
+# Google analytics
+GA_SITE_ID=
+GA_DOMAIN_NAME=DOMAIN_NAME_OF_YOUR_SITE
+

@@ -1,0 +1,271 @@
+// Place all the styles related to the projets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin content-padding() {
+  padding: 0.5rem 1.5rem
+}
+
+.liste-projets {
+  @include make-row();
+  margin-top: 2rem;
+
+.encart {
+  a {
+    border-color: $bleu;
+    display: block;
+    text-decoration: none;
+    color: $gris-svg;
+    &:hover {
+      text-decoration: none;
+      color: $gris-svg;
+    }
+  }
+  .panel {
+    border-color: $bleu;
+    background-color: $bleu;
+    display: block;
+    &:hover {
+      background-color: lighten($bleu, 10%);
+    }
+    .panel-heading {
+      display: block;
+      color: $gris-svg;
+      padding: 10px 15px 0px;
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: $gris-svg;
+        position: relative;
+        top: 4px;
+      }
+      img {
+        width: 80%;
+      }
+      em {
+        font-size: 12px;
+      }
+    }
+    .panel-body {
+      display: block;
+      height: 212px;
+      padding: 0;
+      h2 {
+        text-align: left;
+        margin-top: 0;
+        padding: 10px;
+        background-color: rgba(24, 24, 24, 0.71);
+        color: #fff;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      p {
+        padding: 10px;
+        color: #fff;
+      }
+    }
+    .panel-footer {
+      display: block;
+      background-color: transparent;
+      border: 0;
+      padding: 0 15px;
+    }
+  }
+}
+
+  .projet {
+    @include make-sm-column(4);
+    @include make-md-column(3);
+    height: 25em;
+    margin-bottom: 2.3rem;
+    .contenu {
+      @include content-padding();
+      background-color: lightgrey;
+      height: 80%;
+      border-radius: 3px 3px 0px 0px;
+      .clic-fiche {
+        border-radius: 3px;
+        position: absolute;
+        top: 0;
+        left: 5%;
+        width: 90%;
+        height: 100%;
+        z-index: 10;
+        text-decoration: none;
+        background-color:white;
+        opacity: 0;
+        filter: alpha(opacity=1);
+        &:hover, &:focus {
+          background-color: $brand-primary;
+          opacity: 0.3;
+          filter: alpha(opacity=0.3);
+        }
+      }
+    }
+    .bandeau {
+      @include content-padding();
+      background-color: grey;
+      color: #fff;
+      height: 20%;
+      border-radius:0px 0px 3px 3px;
+    }
+  }
+}
+.blocprojet {
+  @include make-row();
+  .carreprojet {
+    @include make-sm-column-offset(1);
+    @include make-sm-column(10);
+    @include make-md-column(10);
+      background-color: lightgrey;
+      margin-bottom: 10px;
+      border-radius: 3px 3px 0px 0px;
+      border-bottom: solid 1px #000;
+    }
+  .carrecommentaires {
+    @include make-sm-column-offset(1);
+    @include make-sm-column(10);
+    @include make-md-column(10);
+      background-color: lightgrey;
+      border-radius: 0px 0px 3px 3px;
+      border-top: solid 1px #000;
+  }
+}
+#projet_description, #projet_besoin {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 15em;
+}
+#projet_objectif, #projet-titre {
+  width: 100%;
+}
+
+.projets {
+  .contenu-projet {
+    @include make-sm-column(6);
+    h1, h2, h3, h4 {
+      color: $bleu;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  label {
+    margin-top: 1rem;
+  }
+  select#projet_demarrage_3i, select#projet_demarrage_2i, select#projet_demarrage_1i  {
+    @include make-xs-column(4);
+  }
+  .metadonnees-projet {
+    @include make-sm-column(2);
+    @include make-sm-column-offset(1);
+    text-align: right;
+    margin-top: 12px;
+    padding: 5px;
+    h4 {
+      color: $bleu;
+    }
+    img {
+      width: 54px;
+      padding: 5px 6px;
+      background-color: $bleu;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .label {
+      font-size: 100%;
+      color: #fff;
+      background-color: $bleu;
+      padding-top: 4px;
+    }
+    .datecrea {
+      padding-top: 3px;
+    }
+    .categorie {
+      padding-top: 6px;
+      display: block;
+    }
+    .anim-only {
+      text-align: left;
+    }
+  }
+  .barre-sociale {
+    margin: 30px auto;
+  }
+  .liens-projets {
+    @include make-sm-column(3);
+    margin-top: 20px;
+    h4 {
+      color: $bleu;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  }
+}
+
+.blocgaucheprojet{
+  margin: 15px;
+}
+
+.panelcommentaire{
+  .panel-heading{
+  padding-top: 10px;
+  padding-bottom: 0px;
+  }
+}
+
+.categorieprojetshow{
+  max-width: 54px;
+  padding: 5px;
+  background-color: $ocre;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+textarea#commentaire_message{
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  height: 4em;
+  min-height: 4em;
+}
+
+.badge {
+  padding-top: 6px;
+}
+
+.envoyer {
+  margin: 10px 0px 10px 0px;
+}
+
+.formprojet {
+  border: 1px solid $bleu;
+  border-radius: 5px;
+}
+
+.formprojetcheck {
+  width: 1rem;
+  position: absolute;
+  display: inline-block;
+  margin-top: -15px;
+}
+
+.checklabel {
+  margin-left: 5px;
+  @extend .checkbox;
+  label {
+    margin-top: 0;
+  }
+}
+
+.renderformprojet {
+  input {
+    height: 40px;
+  }
+}
