@@ -9,7 +9,7 @@
 
 if Animateur.all.empty?
   Animateur.create(
-    email: ENV['ADMIN_EMAIL'],
+    email: "admin@localhost.io",
     pseudo: "admin",
     nom: "Admin",
     prenom: "Super",
@@ -17,8 +17,8 @@ if Animateur.all.empty?
     commune: 'SOMEWHERE',
     status: 'principal',
     sexe: 'F',
-    password: ENV['ADMIN_PASSWORD'],
-    password_confirmation: ENV['ADMIN_PASSWORD'],
+    password: "administrateur",
+    password_confirmation: "administrateur",
     charte: true,
     confirmed_at: Time.now)
 end
